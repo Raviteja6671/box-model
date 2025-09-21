@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Blog Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --primary: #ff6f48;
+            --secondary: #324d67;
+            --background: #fafafa;
+            --accent: #fff8f2;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--background);
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 34px 0 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0 0 2px;
+            letter-spacing: 1px;
+            font-size: 2.2rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.94;
+        }
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px #bbb4ae2e;
+            padding: 26px 20px;
+        }
+        .blog-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: space-between;
+        }
+        .blog-item {
+            background: var(--accent);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px #caa28423;
+            flex: 0 0 300px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            margin-bottom: 26px;
+            width: 100%;
+            max-width: 320px;
+        }
+        .blog-item img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            background: #eee;
+        }
+        .blog-content {
+            padding: 18px 15px 16px;
+            flex: 1;
+        }
+        .blog-title {
+            margin: 0 0 8px;
+            color: var(--secondary);
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+        .blog-desc {
+            font-size: 0.98rem;
+            color: #494949;
+            line-height: 1.5;
+        }
+        /* About Me Section */
+        .about-me-section {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        .about-me-img {
+            width: 320px;
+            max-width: 90vw;
+            height: 290px;
+            object-fit: cover;
+            border-radius: 0;
+            margin-bottom: 18px;
+        }
+        .about-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 18px 0 4px;
+        }
+        .about-tagline {
+            font-size: 1.07rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 17px;
+        }
+        .about-desc {
+            font-size: 1.01rem;
+            color: #444;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        /* Footer */
+        .custom-footer {
+            background: #fff;
+            border-top: 1px solid #ebebeb;
+            margin-top: 50px;
+            padding: 40px 0 26px;
+        }
+        .footer-container {
+            display: flex;
+            max-width: 1000px;
+            margin: 0 auto;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-section {
+            flex: 1 1 230px;
+            min-width: 190px;
+        }
+        .footer-title {
+            font-weight: 600;
+            letter-spacing: .5px;
+            font-size: 1.07rem;
+            margin-bottom: 9px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section li {
+            margin-bottom: 13px;
+        }
+        .footer-desc {
+            color: #888;
+            font-size: 0.99rem;
+            margin-bottom: 10px;
+        }
+        /* Blog Posts in Footer */
+        .post-preview {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 10px;
+        }
+        .post-preview img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .post-title-footer {
+            font-size: 1.03rem;
+            color: #222;
+        }
+        /* Tags */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag {
+            background: #eee;
+            border-radius: 2px;
+            font-size: 0.93rem;
+            padding: 3px 10px;
+            margin-bottom: 5px;
+            color: #444;
+        }
+        .tag.featured {
+            background: #222;
+            color: #fff;
+        }
+        .powered {
+            text-align: left;
+            font-size: 0.96rem;
+            color: #888;
+            margin-top: 18px;
+            opacity: 0.96;
+        }
+        @media (max-width: 900px) {
+            .container {
+                padding: 16px 4px;
+            }
+            .blog-list {
+                gap: 16px;
+            }
+            .blog-item {
+                max-width: 48%;
+                flex: 0 0 48%;
+            }
+            .footer-container {
+                flex-direction: column;
+            }
+            .footer-section {
+                min-width: 0;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 5px 0;
+            }
+            .blog-list {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .blog-item {
+                max-width: 98vw;
+                width: 98vw;
+                min-width: auto;
+            }
+            .blog-item img {
+                height: 120px;
+            }
+            .about-me-img {
+                width: 98vw;
+                height: 160px;
+            }
+            .footer-container {
+                padding: 0 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Foodie's Paradise</h1>
+        <p>Delicious Eats & Inspiring Stories</p>
+    </header>
+              <div class="container">  
+        <div class="blog-list">
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Food 1">
+                <div class="blog-content">
+                    <div class="blog-title">Classic Italian Pizza</div>
+                    <div class="blog-desc">Crispy base, fresh mozzarella, and a homemade tomato sauce: discover how to make the perfect Margherita at home!</div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="https://c8.alamy.com/comp/MPB1XX/spicy-ramen-bowl-with-noodles-and-chicken-MPB1XX.jpg" alt="Food 3">
+                <div class="blog-content">
+                    <div class="blog-title">Spicy Ramen Bowl</div>
+                    <div class="blog-desc">A warming, umami-rich ramen recipe topped with spicy chicken, fresh greens, and a perfect soft-boiled egg.</div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80" alt="Food 4">
+                <div class="blog-content">
+                    <div class="blog-title">Sweet Mango Smoothie</div>
+                    <div class="blog-desc">A rich, creamy mango smoothie—natural sweetness, healthy fats, and a perfect breakfast treat for sunny mornings.</div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=600&q=80" alt="Food 5">
+                <div class="blog-content">
+                    <div class="blog-title">Chunky Avocado Toast</div>
+                    <div class="blog-desc">Smashed avocado, a sprinkle of chili flakes, and rustic sourdough—your breakfast, upgraded.</div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="Food 6">
+                <div class="blog-content">
+                    <div class="blog-title">Berry Yogurt Parfait</div>
+                    <div class="blog-desc">Layers of creamy yogurt, crunchy granola, and seasonal berries make this parfait both healthy and indulgent.</div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="https://i.pinimg.com/736x/b9/d2/c4/b9d2c41daf7c1153f5cbecc325b804f5.jpg" alt="Food 7">
+                <div class="blog-content">
+                    <div class="blog-title">Herby Quinoa Salad</div>
+                    <div class="blog-desc">Protein-packed quinoa loaded with crisp veggies and a zesty lemon vinaigrette for a light lunch.</div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="https://www.cookingclassy.com/wp-content/uploads/2022/02/molten-lava-cake-17.jpg" alt="Food 8">
+                <div class="blog-content">
+                    <div class="blog-title">Chocolate Lava Cake</div>
+                    <div class="blog-desc">Molten chocolate center, light cake shell, and the ultimate treat for dessert lovers.</div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=600&q=80" alt="Food 9">
+                <div class="blog-content">
+                    <div class="blog-title">Grilled Paneer Tikka</div>
+                    <div class="blog-desc">Indian cottage cheese marinated in spices, skewered, and grilled for smoky perfection.</div>
+                </div>
+            </div>
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Food 10">
+                <div class="blog-content">
+                    <div class="blog-title">Classic Caesar Salad</div>
+                    <div class="blog-desc">Crisp romaine, garlic croutons, shaved parmesan, and a creamy dressing make this timeless salad irresistible.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Me Section -->
+    <div class="about-me-section">
+        <h2>About Me, The Food Man</h2>
+        <img class="about-me-img" src="https://img.freepik.com/premium-photo/chef-preparing-delicious-food-kitchen-professional-chef-uniform-preparing-food-restaurant-kitchen_449849-28699.jpg?w=2000" width="65%" alt="About Me">
+        <div class="about-title">I am Who I Am!</div>
+        <div class="about-tagline">With Passion For Real, Good Food</div>
+        <div class="about-desc">
+            Just me, myself and I exploring the universe of unknownment. I have a heart of love and an interest of food and cooking. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="custom-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-title">FOOTER</div>
+                <div class="footer-desc">
+                    Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                </div>
+                <div class="powered">Powered by <a href="#">Raviteja Kodem.</a></div>
+            </div>
+            <div class="footer-section">
+                <div class="footer-title">BLOG POSTS</div>
+                <ul>
+                    <li>
+                        <div class="post-preview">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Post 1">
+                            <div>
+                                <div class="post-title-footer">Lorem.</div>
+                                <small>Sed mattis nunc</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="post-preview">
+                            <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=600&q=80" alt="Post 2">
+                            <div>
+                                <div class="post-title-footer">Ipsum</div>
+                                <small>Praes tinci sed</small>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <div class="footer-title">POPULAR TAGS</div>
+                <div class="tag-list">
+                    <span class="tag featured">Travel</span>
+                    <span class="tag">New York</span>
+                    <span class="tag">Dinner</span>
+                    <span class="tag">Salmon</span>
+                    <span class="tag">France</span>
+                    <span class="tag">Drinks</span>
+                    <span class="tag">Ideas</span>
+                    <span class="tag">Flavors</span>
+                    <span class="tag">Cuisine</span>
+                    <span class="tag">Chicken</span>
+                    <span class="tag">Dressing</span>
+                    <span class="tag">Fried</span>
+                    <span class="tag">Fish</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
